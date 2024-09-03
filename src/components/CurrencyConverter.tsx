@@ -7,15 +7,41 @@ import AmountInput from "./AmountInput";
 import CurrencyData from "./../types/CurrencyData";
 import RateCalculator from "./../RateCalculator";
 import NumberFormatter from "../NumberFormatter";
+import {QueryClient, useQuery} from "@tanstack/react-query";
+import {createSyncStoragePersister} from "@tanstack/query-sync-storage-persister";
+import {PersistQueryClientProvider} from "@tanstack/react-query-persist-client";
+import DateTimeFactory from "../DateTimeFactory";
+import CnbDataParser from "../CnbDataParser";
 
-const availableCurrencies = new Map<string, CurrencyData>();
-availableCurrencies.set('USD', {country: 'USA', amount: 1, rate: 22.123, code: 'USD', name: 'dollar'});
-availableCurrencies.set('EUR', {country: 'EMU', amount: 1, rate: 25.05, code: 'EUR', name: 'euro'});
-availableCurrencies.set('IDR', {country: 'Indonesia', amount: 1000, rate: 1.467, code: 'IDR', name: 'rupiah'});
+const dateTimeFactory = new DateTimeFactory();
+const cnbQueryClient = new QueryClient();
+const cndDataPersister = createSyncStoragePersister({
+    storage: window.localStorage,
+})
 
 const CurrencyConverter = () => {
     const [selectedCurrency, selectCurrency] = useState<CurrencyData|undefined>(undefined);
     const [currentAmount, setAmount] = useState<number>(0);
+    const { isPending, error, data, isFetching } = useQuery({
+        queryKey: ['cndRatesData', dateTimeFactory.getDateFormatted()],
+        queryFn: async () => {
+            const response = await fetch(
+                'https://api.allorigins.win/raw?url=https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt?date=' + dateTimeFactory.getDateFormatted(),
+            )
+            return await response.text()
+        },
+        staleTime: 1 * 60 * 60 * 1000 // 1 hour,
+    })
+
+    if (isPending || isFetching) {
+        return (<div className="bg-blue-500 p-4 rounded">Loading...</div>);
+    }
+
+    if (error) {
+        return (<div className="bg-red-500 p-4 rounded">An error has occurred: {error.message}</div>);
+    }
+
+    const availableCurrencies = CnbDataParser.parse(data);
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -46,7 +72,9 @@ const CurrencyConverter = () => {
 document.body.innerHTML = '<div id="app" class="container mx-auto py-5"></div>';
 createRoot(document.getElementById('app') as HTMLElement).render(
     <React.StrictMode>
-        <CurrencyConverter/>
+        <PersistQueryClientProvider client={cnbQueryClient} persistOptions={{persister: cndDataPersister}}>
+            <CurrencyConverter/>
+        </PersistQueryClientProvider>
     </React.StrictMode>
 );
 
