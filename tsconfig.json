@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "target": "es6",
+        "jsx": "react",
+        "module": "node16",
+        "moduleResolution": "node16",
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+        ],
+        "paths": {},
+        //"resolveJsonModule": true,
+        "downlevelIteration": true,
+        //"esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        //"skipLibCheck": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noImplicitAny": true,
+    },
+    "exclude": [
+        "node_modules",
+    ],
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx"
+    ],
+}
