@@ -2,6 +2,8 @@
 
 This is a test project to demonstrate the abilities of React, TypeScript, tailwindCSS and TenStack Query (formerly React Query).
 
+The app can be accessed on https://davids-currency-converter.netlify.app/.
+
 ## How to use it locally
 To be able to install and run this app you'll need latest **node** and **NPM**.
 
