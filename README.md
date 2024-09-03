@@ -7,7 +7,7 @@ To be able to install and run this app you'll need latest **node** and **NPM**.
 
 ```shell
 $ npm install
-$ npm start
+$ npm run start
 ```
 
 Once the local server starts up, you'll see the URL address(es) where the app can be accessed. In most cases it'll be http://127.0.0.1:8000/.
@@ -16,13 +16,13 @@ Once the local server starts up, you'll see the URL address(es) where the app ca
 You can build the up by running:
 
 ```shell
-$ npm build
+$ npm run build
 ```
 
 ... or for continuous build:
 
 ```shell
-$ npm watch
+$ npm run watch
 ```
 
 At this time both these commands build the app for production environment.
