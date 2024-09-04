@@ -11,7 +11,6 @@ test('should convert filled amount into two different currencies', async ({ page
   await page.getByLabel('How much CZK do you want to convert?').pressSequentially('85373.273', {delay: 100});
   await page.getByLabel('How much CZK do you want to convert?').press('Backspace', {delay: 100});
 
-  await page.getByTestId('currency-picker-dropdown').click();
   await page.getByTestId('currency-picker-dropdown').selectOption('ISK');
 
   await expect(page.getByTestId('currency-conversion-result')).toBeVisible();

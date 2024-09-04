@@ -21,8 +21,9 @@ const AmountInput = ({amount, onAmountChange}: AmountInputProps) => {
                     min: 0,
                     max: 3,
                 },
+                hidePrefixOrSuffixOnFocus: false,
             },
-            onChange: (value) => onAmountChange(value.number ?? 0),
+            onInput: (value) => onAmountChange(value.number ?? 0),
         });
     }
 
