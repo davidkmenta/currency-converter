@@ -30,7 +30,9 @@ $ npm run watch
 At this time both these commands build the app for production environment.
 
 ## Known issues & additional information
-* Because of the Czech National Bank's API is not accessible outside of the origin (due to badly configured CORS) the app is using a proxy to get the exchange rates. It's a 3rd party proxy and it may become unavailable anytime.
+* Because of the Czech National Bank's API is not accessible outside of the origin (due to badly configured CORS) the app is using a proxy to get the exchange rates.
+It's a 3rd party proxy and it may become unavailable anytime.
+It'd be better to create a script/lambda that'd download the data, save it and serve it because it can be used as a backup in a case the CNB API becomes unavailable.
 * Exchange rates are downloaded every hour even though the exchange rates are updated by the Czech National Bank once a day. Optimization is coming!
 * Tests and static analysis are on the way!
 * The app intentionally uses Czech National Bank old API but it'd be better to use the CNB JSON API: https://api.cnb.cz/cnbapi/swagger-ui.html.
