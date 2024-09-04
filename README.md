@@ -1,6 +1,6 @@
 # Awesome ReactJS Currency Converter
 
-This is a test project to demonstrate the abilities of React, TypeScript, tailwindCSS and TenStack Query (formerly React Query).
+This is a test project to demonstrate the abilities of React, TypeScript, tailwindCSS + Styled Components and TenStack Query (formerly React Query).
 
 The app can be accessed on https://davids-currency-converter.netlify.app/.
 
@@ -15,7 +15,7 @@ $ npm run start
 Once the local server starts up, you'll see the URL address(es) where the app can be accessed. In most cases it'll be http://127.0.0.1:8000/.
 
 ## Development
-You can build the up by running:
+You can build the app by running:
 
 ```shell
 $ npm run build
@@ -36,7 +36,7 @@ To run unit test suite just run
 $ npm run test:unit
 ```
 
-... and for the end to end test run
+... and for the end to end tests run
 
 ```shell
 $ npm run test:e2e
