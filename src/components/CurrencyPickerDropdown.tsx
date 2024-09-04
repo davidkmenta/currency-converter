@@ -1,5 +1,6 @@
 import React, {ReactElement} from "react";
 import CurrencyData from "../types/CurrencyData";
+import {StyledInput} from "../styled/StyledInput";
 
 interface CurrencyPickerDropdownProps {
     availableCurrencies: Map<string, CurrencyData>;
@@ -18,13 +19,14 @@ const CurrencyPickerDropdown = ({availableCurrencies, onSelect, selectedCurrency
 
     return (
         <div>
-            <select
-                className={`text-white bg-neutral-800 rounded border-2 w-full text-lg p-3 text-center ${selectedCurrency ? 'border-green-500' : 'border-gray-500'}`}
+            <StyledInput
+                $as="select"
+                $isValid={selectedCurrency !== undefined}
                 onChange={(event) => onSelect(availableCurrencies.get(event.currentTarget.value))}
             >
-                <option value=''>- choose currency -</option>
+                <option value="">- choose currency -</option>
                 {currencyPickerDropdownItems}
-            </select>
+            </StyledInput>
         </div>
     );
 }

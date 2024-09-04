@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {NumberFormatStyle, NumberInput} from "intl-number-input";
+import {StyledInput} from "../styled/StyledInput";
 
 interface AmountInputProps {
     amount: number;
@@ -32,11 +33,7 @@ const AmountInput = ({amount, onAmountChange}: AmountInputProps) => {
             <h2 className="text-xl text-white font-bold">
                 <label htmlFor="amount">How much CZK do you want to convert?</label>
             </h2>
-            <input id="amount"
-                   type="text"
-                   ref={inputRef}
-                   className={`text-white bg-neutral-800 rounded border-2 w-full text-lg p-3 text-center my-4 outline-none ${amount === 0 ? 'border-gray-500' : 'border-green-500'}`}
-            />
+            <StyledInput $isValid={amount > 0} id="amount" type="text" ref={inputRef} />
         </div>
     );
 }

@@ -43,4 +43,3 @@ It'd be better to create a script/lambda that'd download the data, save it and s
 * Exchange rates are downloaded every hour even though the exchange rates are updated by the Czech National Bank once a day. Optimization is coming!
 * Tests and static analysis are on the way!
 * The app intentionally uses Czech National Bank old API but it'd be better to use the CNB JSON API: https://api.cnb.cz/cnbapi/swagger-ui.html.
-* tailwindCSS is used without Style Components library as there's no maintained library allowing to use it seamlessly.
