@@ -9,10 +9,9 @@ interface AmountInputProps {
 const AmountInput = ({amount, onAmountChange}: AmountInputProps) => {
     const [, setRefMounted] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
-    let numberInput: NumberInput | null = null;
 
     if (inputRef.current) {
-        numberInput = new NumberInput({
+        new NumberInput({
             el: inputRef.current,
             options: {
                 formatStyle: NumberFormatStyle.Currency,
@@ -22,6 +21,7 @@ const AmountInput = ({amount, onAmountChange}: AmountInputProps) => {
                     max: 3,
                 },
             },
+            onChange: (value) => onAmountChange(value.number ?? 0),
         });
     }
 
@@ -36,7 +36,7 @@ const AmountInput = ({amount, onAmountChange}: AmountInputProps) => {
                    type="text"
                    ref={inputRef}
                    className={`text-white bg-neutral-800 rounded border-2 w-full text-lg p-3 text-center my-4 outline-none ${amount === 0 ? 'border-gray-500' : 'border-green-500'}`}
-                   onInput={() => onAmountChange(numberInput?.getValue().number ?? 0)}/>
+            />
         </div>
     );
 }
