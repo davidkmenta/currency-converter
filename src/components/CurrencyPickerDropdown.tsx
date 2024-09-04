@@ -23,6 +23,7 @@ const CurrencyPickerDropdown = ({availableCurrencies, onSelect, selectedCurrency
                 $as="select"
                 $isValid={selectedCurrency !== undefined}
                 onChange={(event) => onSelect(availableCurrencies.get(event.currentTarget.value))}
+                data-testid="currency-picker-dropdown"
             >
                 <option value="">- choose currency -</option>
                 {currencyPickerDropdownItems}

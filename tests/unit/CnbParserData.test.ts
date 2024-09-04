@@ -1,5 +1,5 @@
-import CnbDataParser from "../src/CnbDataParser";
-import CurrencyData from "../src/types/CurrencyData";
+import CnbDataParser from "../../src/CnbDataParser";
+import CurrencyData from "../../src/types/CurrencyData";
 
 describe('CnbParserData', () => {
     it('should parse Czech National Bank exchange rates data', () => {

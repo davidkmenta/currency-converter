@@ -1,4 +1,4 @@
-import DateTimeFactory from "../src/DateTimeFactory";
+import DateTimeFactory from "../../src/DateTimeFactory";
 
 describe('DateTimeFactory', () => {
     it('should get formatted date', () => {

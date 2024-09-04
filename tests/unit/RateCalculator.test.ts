@@ -1,4 +1,4 @@
-import RateCalculator from "../src/RateCalculator";
+import RateCalculator from "../../src/RateCalculator";
 
 describe('RateCalculator', () => {
     it('should calculate amount for given currency', () => {

@@ -39,7 +39,7 @@ const CurrencyPickerList = ({availableCurrencies, onSelect, selectedCurrency}: C
                         <div>{currency.name}</div>
                     </div>
                 </div>
-                <input type="radio" className="size-5 fill-white transition opacity-100" checked={isSelected}/>
+                <input checked={isSelected} type="radio" className="size-5 fill-white transition opacity-100" data-testid={'pick-currency-' + currency.code}/>
             </StyledCurrencyPickerList>
         )
     });

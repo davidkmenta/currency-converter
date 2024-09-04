@@ -1,4 +1,4 @@
-import NumberFormatter from "../src/NumberFormatter";
+import NumberFormatter from "../../src/NumberFormatter";
 
 describe('NumberFormatter', () => {
     it('should format price in crowns in Czech way', () => {

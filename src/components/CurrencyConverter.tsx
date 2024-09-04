@@ -53,13 +53,16 @@ const CurrencyConverter = () => {
                     selectedCurrency={selectedCurrency}
                 />
 
-                {selectedCurrency && currentAmount !== 0 &&
-                    <div className="rounded-lg bg-orange-500/75 p-4 my-4 text-center text-white text-xl font-bold">
+                {
+                    selectedCurrency
+                    && currentAmount !== 0
+                    && <div className="rounded-lg bg-orange-500/75 p-4 my-4 text-center text-white text-xl font-bold" data-testid="currency-conversion-result">
                         {NumberFormatter.formatPrice(
                             RateCalculator.calc(currentAmount, selectedCurrency),
                             selectedCurrency.code,
                         )}
-                    </div>}
+                    </div>
+                }
             </StyledContent>
             <StyledContent>
                 <CurrencyPickerList
