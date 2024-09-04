@@ -29,6 +29,13 @@ $ npm run watch
 
 At this time both these commands build the app for production environment.
 
+## Q&A
+To run unit test suite just run
+
+```shell
+$ npm run test:unit
+```
+
 ## Known issues & additional information
 * Because of the Czech National Bank's API is not accessible outside of the origin (due to badly configured CORS) the app is using a proxy to get the exchange rates.
 It's a 3rd party proxy and it may become unavailable anytime.
